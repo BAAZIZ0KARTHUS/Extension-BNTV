@@ -1,0 +1,29 @@
+{
+    "manifest_version":2,
+    "name":"BNTV",
+    "description":"BNTV, enhances Nimo with new features.",
+    "version":"1.0.0",
+    "icons":{
+        "16": "icons/BNTV16.png",
+        "48": "icons/BNTV48.png",
+        "128": "icons/BNTV128.png"
+    },
+    "content_scripts":[
+        {
+            "matches":[
+                "*://*.nimo.tv/*"
+            ],
+            "js":
+            [
+                "scripts/AutoComplete_TextArea.js"
+                ,"scripts/Other_Scripts.js"
+                ,"scripts/Script_BNTV.js"
+            ],
+            "css":
+            [
+                "styles/Style_A.css"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
