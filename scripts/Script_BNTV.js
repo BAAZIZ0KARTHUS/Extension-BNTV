@@ -18,7 +18,7 @@ waitForKeyElements('.n-as-fs12', () => {
 
 waitForKeyElements('.BNTV_Emote', () => {
 var popover = new bootstrap.Popover(document.querySelector('.BNTV_Emote'), {
-    container: 'body'
+    container: '.BNTV_Emote'
 })
 });
 get_users_from_LS();
