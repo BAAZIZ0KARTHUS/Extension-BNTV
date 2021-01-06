@@ -15,7 +15,8 @@
             ],
             "js":
             [
-                "scripts/AutoComplete_TextArea.js"
+                "scripts/Mention_AutoComplete_TextArea.js"
+                ,"scripts/Mention_Emote.js"
                 ,"scripts/Other_Scripts.js"
                 ,"scripts/Script_BNTV.js"
             ],

@@ -25,8 +25,13 @@ if(localStorage.getItem("url_BNTV") != null){
 if(localStorage.getItem("popout_url_BNTV") != null){
     popout_url = localStorage.getItem("popout_url_BNTV");
 }
+(async ()=> {
+    'use strict';
+    //data for emotes
+    emotes = await getEmotes();
+})();
 
-//waiting for chatroom to make "dakchi zwin"
+//waiting for chatroom to Add Mention event for chat and emotes
 waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
     var block_to_insert ;
     var container_block ;
@@ -36,33 +41,28 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
     block_to_insert.setAttribute('role', 'listbox');
     container_block = document.getElementsByClassName("n-fx-bs n-as-rnd")[0];
     insertBefore(block_to_insert,container_block);
-
-    /*var block_to_insert1 ;
-    var container_block1 ;
-    block_to_insert1 = document.createElement('div');
-    block_to_insert1.id = 'baaziz_divs_BNTV';
-    block_to_insert1.addEventListener("click",function(e){
-
-    });
-    container_block1 = document.getElementsByClassName("nimo-chat-box__send-btn n-fx0")[0];
-    insertBefore(block_to_insert1,container_block1);*/
     
+    //mention
     new Mentionify(
         document.getElementsByClassName('nimo-room__chatroom__chat-box__input')[0],
         document.getElementById('baaziz_divs_IS'),
         resolveFn,
         replaceFn,
         menuItemFn
-    )
+    );
+
+    //mention emotes
+    var nEmotes = [];
+    for(let i=0;i<emotes.length;i++){
+        nEmotes.push({word:emotes[i].word.substr(1),url:emotes[i].url});
+    }
+    Mention_Emote(nEmotes,'nimo-room__chatroom__chat-box__input',20);
 
 });
 
-(async ()=> {
-    'use strict';
-    //data for emotes
-    emotes = await getEmotes();
-})();
 //document.querySelector("a[href^='/user']").href
+
+//waiting for scroll-bar so we can get people in chat-room and changing emotes-keywords with new emotes
 waitForKeyElements('.nimo-scrollbar', () => {
 
     get_users_from_LS();

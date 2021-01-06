@@ -33,6 +33,33 @@
     background-color: #707070;
     color:  white;
   }
+
+  
+  
+.mention_Menu {
+  background-color: #535252;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-height: 170px;
+  overflow-x: auto;
+}
+
+  
+.mention_Menu-item {
+  cursor: default; padding: 7px;font-size: 11pt;
+}
+
+.mention_Menu-item.selected {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.mention_Menu-item:hover:not(.selected) {
+  background-color: #707070;
+  color:  white;
+}
   
 textarea {
     font: inherit;
