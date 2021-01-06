@@ -15,7 +15,9 @@
             ],
             "js":
             [
-                "scripts/Mention_AutoComplete_TextArea.js"
+                "scripts/Bootstrap2.5.4.js"
+                ,"scripts/Bootstrap5.0.0.js"
+                ,"scripts/Mention_AutoComplete_TextArea.js"
                 ,"scripts/Mention_Emote.js"
                 ,"scripts/Other_Scripts.js"
                 ,"scripts/Script_BNTV.js"
@@ -23,6 +25,7 @@
             "css":
             [
                 "styles/Style_A.css"
+                ,"styles/Bootstrap.css"
             ],
             "run_at": "document_end"
         }
