@@ -91,7 +91,7 @@ const replaceText = (text) => {
 
     for (let i = 0; i < emotes.length; i++) {
         if (msg.includes(emotes[i].word)) {
-            msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img src="${emotes[i].url}"/></span></div>`)
+            msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img class"BNTV_Emote" data-html="true" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="HHHHHHHHHH" title="HHHBBBHHHH" src="${emotes[i].url}"/></span></div>`)
         }
     }
     msg = msg.split("|")

@@ -16,7 +16,11 @@ waitForKeyElements('.n-as-fs12', () => {
     push_Streamer_name();
 });
 
-
+waitForKeyElements('.BNTV_Emote', () => {
+var popover = new bootstrap.Popover(document.querySelector('.BNTV_Emote'), {
+    container: 'body'
+})
+});
 get_users_from_LS();
 
 if(localStorage.getItem("url_BNTV") != null){
