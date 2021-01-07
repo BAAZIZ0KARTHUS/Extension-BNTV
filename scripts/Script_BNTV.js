@@ -15,12 +15,7 @@ get_stream_url_popup();
 waitForKeyElements('.n-as-fs12', () => {
     push_Streamer_name();
 });
-
-waitForKeyElements('.BNTV_Emote', () => {
-var popover = new bootstrap.Popover(document.querySelector('.BNTV_Emote'), {
-    container: '.BNTV_Emote'
-})
-});
+//get users from local storage
 get_users_from_LS();
 
 if(localStorage.getItem("url_BNTV") != null){
@@ -66,7 +61,7 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
 
 //document.querySelector("a[href^='/user']").href
 
-//waiting for scroll-bar so we can get people in chat-room and changing emotes-keywords with new emotes
+//waiting for scroll-bar so we can get people in chatroom and changing keywords with emotes
 waitForKeyElements('.nimo-scrollbar', () => {
 
     get_users_from_LS();
