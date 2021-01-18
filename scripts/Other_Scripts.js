@@ -68,7 +68,7 @@ function waitForKeyElements (
 
 const getEmotes= async () => {
     const data = await fetch(
-      "https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/666da022953720092b7c708e90aa9d16820e3500/gistfile1.json"
+      "https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/4117b4d8fe0cf49e95f86f02bb738ef4535d2211/gistfile1.json"
     );
     const json = await data.json();
     return json;

@@ -53,7 +53,7 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
     //mention emotes
     var nEmotes = [];
     for(let i=0;i<emotes.length;i++){
-        nEmotes.push({word:emotes[i].word.substr(1),url:emotes[i].url});
+        nEmotes.push({Emid:emotes[i].Emid,word:emotes[i].word.substr(1),url:emotes[i].url});
     }
     Mention_Emote(nEmotes,'nimo-room__chatroom__chat-box__input',20);
 
