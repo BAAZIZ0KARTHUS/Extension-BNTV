@@ -68,7 +68,7 @@ function waitForKeyElements (
 
 const getEmotes= async () => {
     const data = await fetch(
-      "https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/4117b4d8fe0cf49e95f86f02bb738ef4535d2211/gistfile1.json"
+        "https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/3248552d0ccc7697df0e57b1eece66a40f083257/gistfile1.json"
     );
     const json = await data.json();
     return json;
@@ -91,8 +91,9 @@ const replaceText = (text) => {
 
     for (let i = 0; i < emotes.length; i++) {
         if (msg.includes(emotes[i].word)) {
-            msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img src="${emotes[i].url}"/></span></div>`)
-            //msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img class"BNTV_Emote" data-html="true" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="" title=": ${emotes[i].word.substr(1)}" src="${emotes[i].url}"/></span></div>`)
+            var s = "" + emotes[i].word.substr(0,(emotes[i].word.length - 1));// onmouseover="tooltip.pop(this, '${s}')
+            msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img class="BNTV_Emote" data-toggle="tooltip" title="${s}" src="${emotes[i].url}"/></span></div>`)
+            //msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img class="BNTV_Emote" data-html="true" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="" title=": ${emotes[i].word.substr(1)}" src="${emotes[i].url}"/></span></div>`)
         }
     }
     msg = msg.split("|")

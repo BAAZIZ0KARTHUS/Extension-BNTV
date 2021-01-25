@@ -15,14 +15,17 @@
             ],
             "js":
             [
-                "scripts/Mention_AutoComplete_TextArea.js"
+                "lib/jquery3.5.1.min.js"
+                ,"lib/bootstrap3.4.1.js"
+                ,"scripts/Mention_AutoComplete_TextArea.js"
                 ,"scripts/Mention_Emote.js"
                 ,"scripts/Other_Scripts.js"
                 ,"scripts/Script_BNTV.js"
             ],
             "css":
             [
-                "styles/Style_A.css"
+                "lib/bootstrap3.4.1.css"
+                ,"styles/Style_A.css"
             ],
             "run_at": "document_end"
         }

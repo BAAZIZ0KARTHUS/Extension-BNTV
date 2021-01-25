@@ -60,6 +60,32 @@
   background-color: #707070;
   color:  white;
 }
+
+.BNTV_Settings{
+  cursor: pointer;
+  font-size: 12pt;
+  font-family: cursive;
+  width: 60px;
+  height: 25px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: black;
+  color: #5000b9;
+}
+.BNTV_Settings:hover:not(.selected) {
+  background-color:rgb(10, 10, 10);
+  color: #5000b9;
+}
+.BNTV_Settings-MENU{
+  font-size: 12pt;
+  font-family: cursive;
+  width: 60px;
+  height: 25px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: black;
+  color: #5000b9;
+}
   
 textarea {
     font: inherit;

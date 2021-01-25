@@ -24,6 +24,7 @@ if(localStorage.getItem("url_BNTV") != null){
 if(localStorage.getItem("popout_url_BNTV") != null){
     popout_url = localStorage.getItem("popout_url_BNTV");
 }
+
 (async ()=> {
     'use strict';
     //data for emotes
@@ -56,6 +57,21 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
         nEmotes.push({Emid:emotes[i].Emid,word:emotes[i].word.substr(1),url:emotes[i].url});
     }
     Mention_Emote(nEmotes,'nimo-room__chatroom__chat-box__input',20);
+
+});
+
+waitForKeyElements('.nimo-chat-box__send-btn', () => {
+    var block_to_insert ;
+    var container_block ;
+    block_to_insert = document.createElement('div');
+    block_to_insert.id = 'BNTV_Settings' ;
+    block_to_insert.className = 'BNTV_Settings' ;
+    block_to_insert.innerHTML = "BNTV";//'<img src="https://lh3.googleusercontent.com/BZnBQKRc0tcjeSh3rbm5A56UFzVH-BlA9uPxPHdxso-I983hYUAz4r2zRJwwhUUS4XGRS6_NRCbBWErRBWN9HQmIkw=w128-h128-e365-rj-sc0x00ffffff" />';
+    container_block = document.getElementsByClassName("nimo-chat-box__send-btn")[0];
+    insertBefore(block_to_insert,container_block);
+    //this one to fix chat
+    //document.getElementsByClassName("n-as-mrgh-xxs")[0].style = "position:absolute; left:10%; height:650px;"
+    //document.getElementsByClassName("n-as-w340px")[0].style = "position:fixed; left:74%; height:650px;";
 
 });
 
@@ -147,4 +163,19 @@ window.onbeforeunload = function (){
         localStorage.setItem("url_BNTV",current_url);
     }
 }
+
+
+var script = document.createElement("script");
+var script1 = document.createElement("script");
+// Add script content
+script.innerHTML = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
+script1.innerHTML = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js";
+// Append
+document.head.appendChild(script);
+document.head.appendChild(script1);
+
+
+waitForKeyElements(".BNTV_Emote" ,() => {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 //document.getElementsByClassName("nimo-room__chatroom__message-item")[1].remove();
