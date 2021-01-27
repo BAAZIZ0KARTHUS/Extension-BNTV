@@ -1,0 +1,171 @@
+:root {
+    box-sizing: border-box;
+    font-family: system, sans-serif;
+  }
+  
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
+
+.baaziz_divs_IS {
+    background-color: #535252;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: 150px;
+    overflow-x: auto;
+  }
+
+    
+  .baaziz_divs_IS-item {
+    cursor: default; padding: 7px;font-size: 11pt;
+  }
+  
+  .baaziz_divs_IS-item.selected {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+  }
+  
+  .baaziz_divs_IS-item:hover:not(.selected) {
+    background-color: #707070;
+    color:  white;
+  }
+
+  
+  
+.mention_Menu {
+  background-color: #535252;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  max-height: 170px;
+  overflow-x: auto;
+}
+
+  
+.mention_Menu-item {
+  cursor: default; padding: 7px;font-size: 11pt;
+}
+
+.mention_Menu-item.selected {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.mention_Menu-item:hover:not(.selected) {
+  background-color: #707070;
+  color:  white;
+}
+
+.BNTV_Settings{
+  cursor: pointer;
+  font-size: 16pt;
+  font-family: sans-serif;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  border-radius: 16px;
+  background-color: black;
+  color: #440097;
+}
+.BNTV_Settings:hover:not(.selected) {
+  background-color:rgba(0, 0, 0, 0.620);
+}
+
+  
+textarea {
+    font: inherit;
+}
+
+
+.BNTV_Settings_MENU{
+  background-color: #2b2b2b;
+  color: white;
+  border-radius: 20px;
+  height: 230px;
+  width: 45%;
+  position: absolute;
+  left: 10%;
+  margin-top: 20px;
+  z-index: 9002;
+}
+
+.BNTV_ITEM_H{
+  text-align: center;
+  background-color: #333333;
+  padding-bottom: 5px;
+  height: 30px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+#BNTV_MENU_hide{
+  font-size: 14pt;
+  width: 80px;
+  height: 24px;
+  text-align: center;
+  margin: 3px;
+  cursor: pointer;
+  float: right;
+  background-color: #000000;
+  border-radius: 15px;
+}
+#BNTV_MENU_hide:hover{
+  background-color: #00000098;
+}
+
+
+.BNTV_Settings_MENU_ITEM{
+  background-color: #585858;
+  font-size: 16pt;
+  height: 40px;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+#BNTV_ButtonC{
+  cursor: pointer;
+  float: right;
+  width: 80px;
+  height: 30px;
+  font-size: 16pt;
+  color: white;
+  background-color: #440097;
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+#BNTV_ButtonC:hover{
+  background-color: #440097a8;
+}
+
+
+.BNTV_T{
+  padding-top: 15px;
+  padding-left: 8px;
+}
+
+/**/
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(48, 48, 48);
+}

@@ -246,7 +246,7 @@ function Mention_Emote(el_arrays , textarea_Class , show_max){
       ? el_arrays
       : el_arrays.filter(el_array => el_array.word.toLowerCase().startsWith(prefix.toLowerCase()) || el_array.word.toUpperCase().startsWith(prefix.toUpperCase()))
     
-    const replaceFn = (el_array, trigger) => `${trigger}${el_array.word} `
+    const replaceFn = (el_array, trigger) => `${trigger}${el_array.word}`
     
     const menuItemFn = (el_array, setItem, selected) => {
       const div = document.createElement('div')

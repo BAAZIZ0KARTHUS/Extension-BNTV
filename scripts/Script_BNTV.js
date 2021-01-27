@@ -3,7 +3,7 @@ var user_Name = "";
 let emotes = [];
 let current_url = "";
 let popout_url = "";
-
+var showmenu = false;
 
 
 //get user name from cookies
@@ -37,7 +37,7 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
     var container_block ;
     block_to_insert = document.createElement('div');
     block_to_insert.id = 'baaziz_divs_IS' ;
-    block_to_insert.className = 'baaziz_divs_IS' ;
+    block_to_insert.className = 'baaziz_divs_IS';
     block_to_insert.setAttribute('role', 'listbox');
     container_block = document.getElementsByClassName("n-fx-bs n-as-rnd")[0];
     insertBefore(block_to_insert,container_block);
@@ -66,16 +66,67 @@ waitForKeyElements('.nimo-chat-box__send-btn', () => {
     block_to_insert = document.createElement('div');
     block_to_insert.id = 'BNTV_Settings' ;
     block_to_insert.className = 'BNTV_Settings' ;
-    block_to_insert.innerHTML = "BNTV";//'<img src="https://lh3.googleusercontent.com/BZnBQKRc0tcjeSh3rbm5A56UFzVH-BlA9uPxPHdxso-I983hYUAz4r2zRJwwhUUS4XGRS6_NRCbBWErRBWN9HQmIkw=w128-h128-e365-rj-sc0x00ffffff" />';
+    block_to_insert.innerHTML = `<span data-toggle="tooltip" title="BNTV Settings">BNTV</span>`;
     container_block = document.getElementsByClassName("nimo-chat-box__send-btn")[0];
     insertBefore(block_to_insert,container_block);
-    //this one to fix chat
-    //document.getElementsByClassName("n-as-mrgh-xxs")[0].style = "position:absolute; left:10%; height:650px;"
-    //document.getElementsByClassName("n-as-w340px")[0].style = "position:fixed; left:74%; height:650px;";
+    $('[data-toggle="tooltip"]').tooltip();
+    //add event click to show Settings Menu
+    document.getElementById('BNTV_Settings').addEventListener("click", function(){
+        if(showmenu){
+            document.getElementById('BNTV_Settings_MENU').style.display = "none";
+            showmenu = false;
+        }else{
+            document.getElementById('BNTV_Settings_MENU').style.display = "block";
+            showmenu=true;
+        }
+    });
 
 });
+//adding menu to hide chat and leader board or to clear chat room
+waitForKeyElements('.nimo-room__main', () => {
+    var block_to_insert ;
+    var container_block ;
+    block_to_insert = document.createElement('div');
+    block_to_insert.id = 'BNTV_Settings_MENU' ;
+    block_to_insert.className = 'BNTV_Settings_MENU' ;
+    block_to_insert.style.display = "none"
+    block_to_insert.innerHTML = '<div class="BNTV_ITEM_H"><span class="BNTV_T">BNTV Settings</span><div id="BNTV_MENU_hide">Close</div></div>'+
+    '<div class="BNTV_Settings_MENU_ITEM">'+
+    '<span class="BNTV_T">Hide chat</span>'+
+        '<label class="switch">'+
+            '<input id="BNTV_CB" type="checkbox">'+
+            '<span class="slider round"></span>'+
+        '</label>'+
+    '</div>'+
+    '<div class="BNTV_Settings_MENU_ITEM">'+
+    '<span class="BNTV_T">Hide leader board</span>'+
+        '<label class="switch" >'+
+            '<input id="BNTV_CB2" type="checkbox">'+
+            '<span class="slider round"></span>'+
+        '</label>'+
+    '</div>'+
+    '<div class="BNTV_Settings_MENU_ITEM">'+
+    '<span class="BNTV_T">Hide shop content</span>'+
+        '<label class="switch" >'+
+            '<input id="BNTV_CB3" type="checkbox">'+
+            '<span class="slider round"></span>'+
+        '</label>'+
+    '</div>'+
+    '<div class="BNTV_Settings_MENU_ITEM">'+
+        '<span class="BNTV_T">Clear chat room</span>'+
+        '<input id="BNTV_ButtonC" type="button" value="Clear">'+
+    '</div>';
+    container_block = document.getElementsByClassName("nimo-room__main")[0];
+    insertBefore(block_to_insert,container_block);
+    //add events click to inputs
+    document.getElementById('BNTV_CB').addEventListener("click", function(){hideDivF('BNTV_CB','MessageList'); });
+    document.getElementById('BNTV_CB2').addEventListener("click", function(){hideDivF('BNTV_CB2','nimo-room__rank'); });
+    document.getElementById('BNTV_CB3').addEventListener("click", function(){hideDivF('BNTV_CB3','nimo-room__gift-shop'); });
+    document.getElementById('BNTV_MENU_hide').addEventListener("click", function(){ document.getElementById('BNTV_Settings_MENU').style.display = "none";showmenu = false;});
+    document.getElementById('BNTV_ButtonC').addEventListener("click", function(){ ClearChatRoom()});
 
-//document.querySelector("a[href^='/user']").href
+});
+/**/
 
 //waiting for scroll-bar so we can get people in chatroom and changing keywords with emotes
 waitForKeyElements('.nimo-scrollbar', () => {
@@ -134,6 +185,7 @@ function get_stream_url_popup(){
         localStorage.setItem("popout_url_BNTV",popout_url);
     });
 }
+
 // get streamer nick name and save it to localstorage
 function push_Streamer_name(){
     var sn = document.getElementsByClassName('n-as-fs12')[0].textContent;
@@ -146,14 +198,6 @@ function push_Streamer_name(){
     localStorage.setItem("On_chat_BNTV",JSON.stringify(users));
 }
 
-// get user nickname from localstorage
-function get_users_from_LS(){
-    users = [];
-    if(localStorage.getItem("On_chat_BNTV") != null){
-        var ls = localStorage.getItem("On_chat_BNTV");
-        users = JSON.parse(ls);
-    }
-}
 //save members in chatroom
 window.onbeforeunload = function (){
     if(popout_url != window.location.href){
@@ -164,18 +208,9 @@ window.onbeforeunload = function (){
     }
 }
 
-
-var script = document.createElement("script");
-var script1 = document.createElement("script");
-// Add script content
-script.innerHTML = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
-script1.innerHTML = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js";
-// Append
-document.head.appendChild(script);
-document.head.appendChild(script1);
+//document.getElementsByClassName("nimo-room__chatroom__message-item")[1].remove();
 
 
 waitForKeyElements(".BNTV_Emote" ,() => {
     $('[data-toggle="tooltip"]').tooltip();
 });
-//document.getElementsByClassName("nimo-room__chatroom__message-item")[1].remove();

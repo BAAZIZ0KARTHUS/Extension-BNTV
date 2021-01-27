@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "name":"BNTV",
-    "version":"2.2.1",
+    "version":"3.0.0",
     "description":"Enhances Nimo with new features,emotes and more.",
     "icons":{
         "16": "icons/BNTV16.png",
@@ -24,8 +24,9 @@
             ],
             "css":
             [
-                "lib/bootstrap3.4.1.css"
-                ,"styles/Style_A.css"
+                "styles/BNTV_Style_tooltip.css"
+                ,"styles/BNTV_Style.css"
+                ,"styles/BNTV_Style_CB.css"
             ],
             "run_at": "document_end"
         }

@@ -111,21 +111,26 @@ const replaceText = (text) => {
 // if someone mention your name , it will be shown with red color
 const Show_Mention_Text = () => {
 
-    var chat_disc = document.getElementsByClassName('nimo-room__chatroom__message-item__content');
+    var chat_b = document.getElementsByClassName('nimo-room__chatroom__message-item');
+    if(chat_b.length > 1){
+        for(let j = 1; j < chat_b.length; j++){
     
-    for(let i = 0; i< chat_disc.length; i++){
-        var ch = "@" + user_Name;
-        if(chat_disc[i].textContent.search(ch) != -1 || chat_disc[i].textContent.search("@everyone") != -1){
-            chat_disc[i].style.backgroundColor = 'red'
-            chat_disc[i].style.color = 'black'
-
-            chat_disc[0].style.backgroundColor = 'transparent'
-            chat_disc[0].style.color = 'hsla(0,0%,100%,.4)'
+            var chat_disc = chat_b[j].querySelectorAll('.nimo-room__chatroom__message-item__content');
+    
+            for(let i = 0; i< chat_disc.length; i++){
+                var ch = "@" + user_Name;
+                if(chat_disc[i].textContent.search(ch) != -1 || chat_disc[i].textContent.search("@everyone") != -1){
+                    chat_disc[i].style.backgroundColor = 'red'
+                    chat_disc[i].style.color = 'black'
+    
+                    chat_b[j].style.backgroundColor = '#30006b'
+                }
+            }
         }
     }
 }
 
-// get the names who is in chat
+// get names from chat room
 const GIVE_Chaters = () =>{
 
 
@@ -151,3 +156,39 @@ const Is_IN_Coll = (name) =>{
     return false;
 }
 
+//hide or show element using checkbox
+function hideDivF(cb, classn) 
+{
+    var checkBox = document.getElementById(cb);
+    var x = document.getElementsByClassName(classn)[0];
+    if (checkBox.checked == true)
+    {
+      x.style.display = "none";
+    } 
+    else 
+    {
+      if(classn == 'nimo-room__gift-shop'){
+        x.style.display = "flex";
+      }else{
+        x.style.display = "block";
+      }
+    }
+}
+
+// get user nickname from localstorage
+function get_users_from_LS(){
+    users = [];
+    if(localStorage.getItem("On_chat_BNTV") != null){
+        var ls = localStorage.getItem("On_chat_BNTV");
+        users = JSON.parse(ls);
+    }
+}
+//clear chat room
+function ClearChatRoom(){
+    var ncr = document.getElementsByClassName('nimo-room__chatroom__message-item');
+    if(ncr.length > 1){
+        for(var i = 1; i<ncr.length; i++){
+            ncr[i].style.display = "none";
+        }
+    }
+}
