@@ -88,14 +88,7 @@ const getCookieValue = (a) => {
 const replaceText = (text) => {
 
     let msg = text.replaceAll(" ", "|")
-
-    for (let i = 0; i < emotes.length; i++) {
-        if (msg.includes(emotes[i].word)) {
-            var s = "" + emotes[i].word.substr(0,(emotes[i].word.length - 1));// onmouseover="tooltip.pop(this, '${s}')
-            msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img class="BNTV_Emote" data-toggle="tooltip" title="${s}" src="${emotes[i].url}"/></span></div>`)
-            //msg = msg.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img class="BNTV_Emote" data-html="true" data-bs-trigger="hover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="" title=": ${emotes[i].word.substr(1)}" src="${emotes[i].url}"/></span></div>`)
-        }
-    }
+    
     msg = msg.split("|")
     msg = msg.filter(function (el) {
         return el != "";
@@ -108,8 +101,33 @@ const replaceText = (text) => {
     return msg
 }
 
+const showEmotes = () => {
+
+    var chat_b = document.getElementsByClassName('nimo-room__chatroom__message-item');
+    if(chat_b.length > 1){
+        for(let j = 1; j < chat_b.length; j++){
+    
+            var chat_disc = chat_b[j].querySelectorAll('.nimo-room__chatroom__message-item__content');
+    
+            for (let i = 0; i < emotes.length; i++) {
+
+                for(let k = 0; k< chat_disc.length; k++){
+
+                    var s = "" + emotes[i].word.substr(0,(emotes[i].word.length - 1)) + "";
+                    var s1 = "" + emotes[i].word;
+                    if(chat_disc[k].textContent.search(emotes[i].word) != -1){
+                        chat_disc[k].innerHTML = chat_disc[k].innerHTML.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container BNTV_Emote" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img alt="${s1} " src="${emotes[i].url}"/><div class="BNTV_Emotetooltiptext">BNTV<br>${s}</div></span></div>`);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 // if someone mention your name , it will be shown with red color
-const Show_Mention_Text = () => {
+const showMentionText = () => {
 
     var chat_b = document.getElementsByClassName('nimo-room__chatroom__message-item');
     if(chat_b.length > 1){
@@ -131,14 +149,14 @@ const Show_Mention_Text = () => {
 }
 
 // get names from chat room
-const GIVE_Chaters = () =>{
+const getChat = () =>{
 
 
     var chaters = document.getElementsByClassName('nm-message-nickname');
 
     for(let i = 0; i< chaters.length; i++){
         //check every one in chat
-        if(chaters[i].textContent != user_Name && !Is_IN_Coll(chaters[i].textContent) && chaters[i].textContent != "System Message"){
+        if(chaters[i].textContent != user_Name && !isINColl(chaters[i].textContent) && chaters[i].textContent != "System Message"){
             users.push({username : chaters[i].textContent });
         }
     }
@@ -146,7 +164,7 @@ const GIVE_Chaters = () =>{
 }
 
 // this function check array to add new object
-const Is_IN_Coll = (name) =>{
+const isINColl = (name) =>{
 
     for(let i = 0; i< users.length; i++){
         if (users[i].username == name){
@@ -176,7 +194,7 @@ function hideDivF(cb, classn)
 }
 
 // get user nickname from localstorage
-function get_users_from_LS(){
+function getUsersFromLS(){
     users = [];
     if(localStorage.getItem("On_chat_BNTV") != null){
         var ls = localStorage.getItem("On_chat_BNTV");
@@ -184,11 +202,33 @@ function get_users_from_LS(){
     }
 }
 //clear chat room
-function ClearChatRoom(){
+function clearChatRoom(){
     var ncr = document.getElementsByClassName('nimo-room__chatroom__message-item');
     if(ncr.length > 1){
         for(var i = 1; i<ncr.length; i++){
             ncr[i].style.display = "none";
         }
     }
+}
+
+//get streamer Id and get popout url
+function getStreamUrlPopup(){
+    waitForKeyElements(".nimo-rm" ,() => {
+        var strrr = "";
+        strrr = document.querySelector("a[href^='/user']").href;
+        popout_url = "https://www.nimo.tv/popout/chat/" + strrr.substr(25);
+        localStorage.setItem("popout_url_BNTV",popout_url);
+    });
+}
+
+// get streamer nick name and save it to localstorage
+function pushStreamerName(){
+    var sn = document.getElementsByClassName('n-as-fs12')[0].textContent;
+    if(!isINColl("everyone")){
+        users.push({username : "everyone" });
+    }
+    if(!isINColl(sn)){
+        users.push({username : sn });
+    }
+    localStorage.setItem("On_chat_BNTV",JSON.stringify(users));
 }
