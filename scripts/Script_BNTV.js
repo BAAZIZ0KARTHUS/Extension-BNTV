@@ -153,15 +153,17 @@ waitForKeyElements('.nimo-scrollbar', () => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length > 0 && mutation.addedNodes[0].className === "nimo-room__chatroom__message-item") {
                 let msg = mutation.addedNodes[0].querySelector(".nimo-room__chatroom__message-item__content").textContent;
+                let msg1 = mutation.addedNodes[0];
                 
                 getUsersFromLS();
                 getChat();
 
+
                 let res = replaceText(msg);
                 let user = mutation.addedNodes[0].querySelector('span:nth-child(1)');
                 mutation.addedNodes[0].innerHTML = user.outerHTML + res.join(" ");
-                showEmotes();
-                showMentionText();
+                showEmotes(msg1);
+                showMentionText(msg1);
 
                 localStorage.setItem("On_chat_BNTV",JSON.stringify(users));
             }

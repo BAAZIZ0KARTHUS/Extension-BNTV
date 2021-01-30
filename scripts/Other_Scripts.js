@@ -101,24 +101,20 @@ const replaceText = (text) => {
     return msg
 }
 
-const showEmotes = () => {
+const showEmotes = (classn) => {
 
-    var chat_b = document.getElementsByClassName('nimo-room__chatroom__message-item');
-    if(chat_b.length > 1){
-        for(let j = 1; j < chat_b.length; j++){
-    
-            var chat_disc = chat_b[j].querySelectorAll('.nimo-room__chatroom__message-item__content');
-    
-            for (let i = 0; i < emotes.length; i++) {
+    var chat_b = classn;
+    var chat_disc = chat_b.querySelectorAll('.nimo-room__chatroom__message-item__content');
 
-                for(let k = 0; k< chat_disc.length; k++){
+    for (let i = 0; i < emotes.length; i++) {
 
-                    var s = "" + emotes[i].word.substr(0,(emotes[i].word.length - 1)) + "";
-                    var s1 = "" + emotes[i].word;
-                    if(chat_disc[k].textContent.search(emotes[i].word) != -1){
-                        chat_disc[k].innerHTML = chat_disc[k].innerHTML.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container BNTV_Emote" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img alt="${s1} " src="${emotes[i].url}"/><div class="BNTV_Emotetooltiptext">BNTV<br>${s}</div></span></div>`);
-                    }
-                }
+        for(let k = 0; k< chat_disc.length; k++){
+
+            var s = "" + emotes[i].word.substr(0,(emotes[i].word.length - 1)) + "";
+            var s1 = "" + emotes[i].word;
+
+            if(chat_disc[k].textContent.search(emotes[i].word) != -1){
+                chat_disc[k].innerHTML = chat_disc[k].innerHTML.replaceAll(emotes[i].word, `<div class="nimo-room__chatroom__message-item__custom-emoticon-container BNTV_Emote" style="background: none;"><span class="nimo-image nimo-room__chatroom__message-item__custom-emoticon"><img alt="${s1} " src="${emotes[i].url}"/><div class="BNTV_Emotetooltiptext">BNTV<br>${s}</div></span></div>`);
             }
         }
     }
@@ -127,31 +123,25 @@ const showEmotes = () => {
 
 
 // if someone mention your name , it will be shown with red color
-const showMentionText = () => {
+const showMentionText = (classn) => {
 
-    var chat_b = document.getElementsByClassName('nimo-room__chatroom__message-item');
-    if(chat_b.length > 1){
-        for(let j = 1; j < chat_b.length; j++){
-    
-            var chat_disc = chat_b[j].querySelectorAll('.nimo-room__chatroom__message-item__content');
-    
-            for(let i = 0; i< chat_disc.length; i++){
-                var ch = "@" + user_Name;
-                if(chat_disc[i].textContent.search(ch) != -1 || chat_disc[i].textContent.search("@everyone") != -1){
-                    chat_disc[i].style.backgroundColor = 'red'
-                    chat_disc[i].style.color = 'black'
-    
-                    chat_b[j].style.backgroundColor = '#30006b'
-                }
-            }
+    var chat_b = classn;
+    var chat_disc = chat_b.querySelectorAll('.nimo-room__chatroom__message-item__content');
+
+    for(let i = 0; i< chat_disc.length; i++){
+        var ch = "@" + user_Name;
+        if(chat_disc[i].textContent.search(ch) != -1 || chat_disc[i].textContent.search("@everyone") != -1){
+            chat_disc[i].style.backgroundColor = 'red'
+            chat_disc[i].style.color = 'black'
+
+            chat_b.style.backgroundColor = '#30006b'
         }
     }
 }
 
 // get names from chat room
 const getChat = () =>{
-
-
+    
     var chaters = document.getElementsByClassName('nm-message-nickname');
 
     for(let i = 0; i< chaters.length; i++){
