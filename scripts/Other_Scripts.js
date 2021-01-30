@@ -101,10 +101,9 @@ const replaceText = (text) => {
     return msg
 }
 
-const showEmotes = (classn) => {
+const showEmotes = (chat_item) => {
 
-    var chat_b = classn;
-    var chat_disc = chat_b.querySelectorAll('.nimo-room__chatroom__message-item__content');
+    var chat_disc = chat_item.querySelectorAll('.nimo-room__chatroom__message-item__content');
 
     for (let i = 0; i < emotes.length; i++) {
 
@@ -123,10 +122,9 @@ const showEmotes = (classn) => {
 
 
 // if someone mention your name , it will be shown with red color
-const showMentionText = (classn) => {
+const showMentionText = (chat_item) => {
 
-    var chat_b = classn;
-    var chat_disc = chat_b.querySelectorAll('.nimo-room__chatroom__message-item__content');
+    var chat_disc = chat_item.querySelectorAll('.nimo-room__chatroom__message-item__content');
 
     for(let i = 0; i< chat_disc.length; i++){
         var ch = "@" + user_Name;
@@ -134,7 +132,7 @@ const showMentionText = (classn) => {
             chat_disc[i].style.backgroundColor = 'red'
             chat_disc[i].style.color = 'black'
 
-            chat_b.style.backgroundColor = '#30006b'
+            chat_item.style.backgroundColor = '#30006b'
         }
     }
 }
