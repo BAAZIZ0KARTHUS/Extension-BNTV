@@ -6,7 +6,7 @@ function insertBefore_Item(newNode, existingNode) {
     existingNode.parentNode.insertBefore(newNode, existingNode);
 }
 
-function Mention_Emote(el_arrays , textarea_Class , show_max){
+function mentionEmote(el_arrays , textarea_Class , show_max){
 
     //insert new div after textarea to show mention in array
     var block_to_insert ;

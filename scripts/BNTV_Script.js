@@ -1,6 +1,6 @@
 
 var user_Name = "";
-let emotes = [];
+var emotes = [];
 let current_url = "";
 let popout_url = "";
 var showmenu = false;
@@ -40,7 +40,7 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
     block_to_insert.className = 'baaziz_divs_IS';
     block_to_insert.setAttribute('role', 'listbox');
     container_block = document.getElementsByClassName("n-fx-bs n-as-rnd")[0];
-    insertBefore(block_to_insert,container_block);
+    insertBefore_Item(block_to_insert,container_block);
     
     //mention
     new Mentionify(
@@ -56,7 +56,8 @@ waitForKeyElements('.nimo-room__chatroom__chat-box__input', () => {
     for(let i=0;i<emotes.length;i++){
         nEmotes.push({Emid:emotes[i].Emid,word:emotes[i].word.substr(1)+" ",url:emotes[i].url});
     }
-    Mention_Emote(nEmotes,'nimo-room__chatroom__chat-box__input',20);
+    mentionEmote(nEmotes,'nimo-room__chatroom__chat-box__input',20);
+    
 
 });
 
@@ -68,7 +69,7 @@ waitForKeyElements('.nimo-chat-box__send-btn', () => {
     block_to_insert.className = 'BNTV_Settings BNTV_Emote' ;
     block_to_insert.innerHTML = `BNTV<span  class="BNTV_Emotetooltiptext">BNTV Settings</span>`;
     container_block = document.getElementsByClassName("nimo-chat-box__send-btn")[0];
-    insertBefore(block_to_insert,container_block);
+    insertBefore_Item(block_to_insert,container_block);
     //$('[data-toggle="tooltip"]').tooltip();
     //add event click to show Settings Menu
     document.getElementById('BNTV_Settings').addEventListener("click", function(){
@@ -83,14 +84,14 @@ waitForKeyElements('.nimo-chat-box__send-btn', () => {
 
 });
 //adding menu to hide chat and leader board or to clear chat room
-waitForKeyElements('.nimo-room__main', () => {
+waitForKeyElements('.nimo-room__rank', () => {
     var block_to_insert ;
     var container_block ;
     block_to_insert = document.createElement('div');
-    block_to_insert.id = 'BNTV_Settings_MENU' ;
-    block_to_insert.className = 'BNTV_Settings_MENU' ;
-    block_to_insert.style.display = "none"
-    block_to_insert.innerHTML = '<div class="BNTV_ITEM_H"><span class="BNTV_T">BNTV Settings</span><div id="BNTV_MENU_hide">Close</div></div>'+
+    block_to_insert.id = 'BNTV_Settings_MENU';
+    block_to_insert.className = 'BNTV_Settings_MENU';
+    block_to_insert.style.display = "none";
+    block_to_insert.innerHTML = '<div class="BNTV_ITEM_H"><div class="BNTV_T">BNTV Settings</div><div id="BNTV_MENU_hide">Close</div></div>'+
     '<div class="BNTV_Settings_MENU_ITEM">'+
     '<span class="BNTV_T">Hide chat</span>'+
         '<label class="switch">'+
@@ -116,8 +117,8 @@ waitForKeyElements('.nimo-room__main', () => {
         '<span class="BNTV_T">Clear chat room</span>'+
         '<input id="BNTV_ButtonC" type="button" value="Clear">'+
     '</div>';
-    container_block = document.getElementsByClassName("nimo-room__main")[0];
-    insertBefore(block_to_insert,container_block);
+    container_block = document.getElementsByClassName("nimo-room__rank")[0];
+    insertBefore_Item(block_to_insert,container_block);
     //add events click to inputs
     document.getElementById('BNTV_CB').addEventListener("click", function(){hideDivF('BNTV_CB','MessageList'); });
     document.getElementById('BNTV_CB2').addEventListener("click", function(){hideDivF('BNTV_CB2','nimo-room__rank'); });

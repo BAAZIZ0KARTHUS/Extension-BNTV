@@ -1,7 +1,7 @@
 {
     "manifest_version":2,
     "name":"BNTV",
-    "version":"3.1.1",
+    "version":"3.1.2",
     "description":"Enhances Nimo with new features,emotes and more.",
     "icons":{
         "16": "icons/BNTV16.png",
@@ -15,10 +15,10 @@
             ],
             "js":
             [
-                "scripts/Mention_AutoComplete_TextArea.js"
-                ,"scripts/Mention_Emote.js"
-                ,"scripts/Other_Scripts.js"
-                ,"scripts/Script_BNTV.js"
+                "scripts/BNTV_MentionChat.js"
+                ,"scripts/BNTV_MentionEmote.js"
+                ,"scripts/BNTV_OtherScripts.js"
+                ,"scripts/BNTV_Script.js"
             ],
             "css":
             [

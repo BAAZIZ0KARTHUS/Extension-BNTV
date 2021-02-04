@@ -1,4 +1,4 @@
-
+//#region waitForKeyElements
 function waitForKeyElements (
     selectorTxt,    /* Required: The selector string that
                         specifies the desired element(s).
@@ -64,19 +64,16 @@ function waitForKeyElements (
     }
     waitForKeyElements.controlObj   = controlObj;
 }
-
+//#endregion
 
 const getEmotes= async () => {
     const data = await fetch(
-        "https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/3248552d0ccc7697df0e57b1eece66a40f083257/gistfile1.json"
+        "https://bntv-dfc05-default-rtdb.europe-west1.firebasedatabase.app/emotes.json"
+        //"https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/3248552d0ccc7697df0e57b1eece66a40f083257/gistfile1.json"
     );
     const json = await data.json();
     return json;
 };
-
-function insertBefore(newNode, existingNode) {
-    existingNode.parentNode.insertBefore(newNode, existingNode);
-}
 
 const getCookieValue = (a) => {
     var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
@@ -84,7 +81,7 @@ const getCookieValue = (a) => {
 }
 
 
-//function for replacing emotes keywords with emotes
+//function for formating text
 const replaceText = (text) => {
 
     let msg = text.replaceAll(" ", "|")
@@ -101,6 +98,7 @@ const replaceText = (text) => {
     return msg
 }
 
+//function for replacing emotes keywords with emotes
 const showEmotes = (chat_item) => {
 
     var chat_disc = chat_item.querySelectorAll('.nimo-room__chatroom__message-item__content');
