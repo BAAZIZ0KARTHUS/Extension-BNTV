@@ -5,6 +5,8 @@ let current_url = "";
 let popout_url = "";
 var showmenu = false;
 
+var event_class = "nimo-iframe__wrap";//document.getElementsByClassName("nimo-iframe__wrap")[0].remove();
+
 
 //get user name from cookies
 user_Name = getCookieValue("userName");
@@ -100,16 +102,23 @@ waitForKeyElements('.nimo-room__rank', () => {
         '</label>'+
     '</div>'+
     '<div class="BNTV_Settings_MENU_ITEM">'+
-    '<span class="BNTV_T">Hide leader board</span>'+
+        '<span class="BNTV_T">Hide leader board</span>'+
         '<label class="switch" >'+
             '<input id="BNTV_CB2" type="checkbox">'+
             '<span class="slider round"></span>'+
         '</label>'+
     '</div>'+
     '<div class="BNTV_Settings_MENU_ITEM">'+
-    '<span class="BNTV_T">Hide shop content</span>'+
+        '<span class="BNTV_T">Hide shop content</span>'+
         '<label class="switch" >'+
             '<input id="BNTV_CB3" type="checkbox">'+
+            '<span class="slider round"></span>'+
+        '</label>'+
+    '</div>'+
+    '<div class="BNTV_Settings_MENU_ITEM">'+
+        '<span class="BNTV_T">Hide current event</span>'+
+        '<label class="switch" >'+
+            '<input id="BNTV_CB4" type="checkbox">'+
             '<span class="slider round"></span>'+
         '</label>'+
     '</div>'+
@@ -123,6 +132,7 @@ waitForKeyElements('.nimo-room__rank', () => {
     document.getElementById('BNTV_CB').addEventListener("click", function(){hideDivF('BNTV_CB','MessageList'); });
     document.getElementById('BNTV_CB2').addEventListener("click", function(){hideDivF('BNTV_CB2','nimo-room__rank'); });
     document.getElementById('BNTV_CB3').addEventListener("click", function(){hideDivF('BNTV_CB3','nimo-room__gift-shop'); });
+    document.getElementById('BNTV_CB4').addEventListener("click", function(){hideDivF('BNTV_CB4',event_class); });
     document.getElementById('BNTV_MENU_hide').addEventListener("click", function(){ document.getElementById('BNTV_Settings_MENU').style.display = "none";showmenu = false;});
     document.getElementById('BNTV_ButtonC').addEventListener("click", function(){ clearChatRoom()});
 
