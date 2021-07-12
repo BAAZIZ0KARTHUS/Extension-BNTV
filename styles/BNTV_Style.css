@@ -104,10 +104,11 @@ textarea {
 }
 #BNTV_MENU_hide{
   font-size: 14pt;
-  width: 80px;
+  width: 24px;
   height: 24px;
   text-align: center;
   margin: 3px;
+  padding-bottom: 2px;
   cursor: pointer;
   float: right;
   background-color: #000000;
@@ -116,6 +117,8 @@ textarea {
 #BNTV_MENU_hide:hover{
   background-color: #00000098;
 }
+
+#BNTV_hide_item{margin: -6px 0px 0px -1px;  font-size: 18pt;}
 
 
 .BNTV_Settings_MENU_ITEM{

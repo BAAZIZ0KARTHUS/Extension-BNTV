@@ -69,6 +69,7 @@ function waitForKeyElements (
 const getEmotes= async () => {
     const data = await fetch(
         "https://bntv-dfc05-default-rtdb.europe-west1.firebasedatabase.app/emotes.json"
+        //"https://betterntv.000webhostapp.com/data/DataEmotes.json"
         //"https://gist.githubusercontent.com/BAAZIZ0KARTHUS/27bb73edf853b10cab4ecbf86b1d52e6/raw/3248552d0ccc7697df0e57b1eece66a40f083257/gistfile1.json"
     );
     const json = await data.json();
@@ -127,10 +128,11 @@ const showMentionText = (chat_item) => {
     for(let i = 0; i< chat_disc.length; i++){
         var ch = "@" + user_Name;
         if(chat_disc[i].textContent.search(ch) != -1 || chat_disc[i].textContent.search("@everyone") != -1){
-            chat_disc[i].style.backgroundColor = 'red'
-            chat_disc[i].style.color = 'black'
+            //chat_disc[i].style.backgroundColor = 'red'
+            //chat_disc[i].style.fontSize='16pt'
+            chat_disc[i].style.color = 'rgb(40, 186, 253)'
 
-            chat_item.style.backgroundColor = '#30006b'
+            chat_item.style.backgroundColor = 'rgb(25, 0, 83)'//'#30006b'
         }
     }
 }

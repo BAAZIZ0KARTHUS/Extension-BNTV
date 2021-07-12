@@ -93,7 +93,7 @@ waitForKeyElements('.nimo-room__rank', () => {
     block_to_insert.id = 'BNTV_Settings_MENU';
     block_to_insert.className = 'BNTV_Settings_MENU';
     block_to_insert.style.display = "none";
-    block_to_insert.innerHTML = '<div class="BNTV_ITEM_H"><div class="BNTV_T">BNTV Settings</div><div id="BNTV_MENU_hide">Close</div></div>'+
+    block_to_insert.innerHTML = '<div class="BNTV_ITEM_H"><div class="BNTV_T">BNTV Settings</div><div id="BNTV_MENU_hide"><div id="BNTV_hide_item">&times;</div></div></div>'+
     '<div class="BNTV_Settings_MENU_ITEM">'+
     '<span class="BNTV_T">Hide chat</span>'+
         '<label class="switch">'+
